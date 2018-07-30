@@ -5,8 +5,8 @@ package org.tensorflow.yolo.util.math;
  * For more information please read this article:
  * https://en.wikipedia.org/wiki/Softmax_function
  *
- * Created by Zoltan Szabo on 1/5/18.
- * URL: https://github.com/szaza/android-yolo-v2
+ * Created by Alessio Mangano on 1/5/18.
+ * URL: https://github.com/sparkling18srl/yolo-android
  */
 
 public class SoftMax {

@@ -13,7 +13,7 @@ import java.util.Locale;
 import static org.tensorflow.yolo.Config.LOGGING_TAG;
 
 /**
- * Created by Zoltan Szabo on 4/25/18.
+ * Created by Alessio Mangano on 4/25/18.
  */
 
 public abstract class TextToSpeechActivity extends CameraActivity implements TextToSpeech.OnInitListener {
@@ -43,9 +43,9 @@ public abstract class TextToSpeechActivity extends CameraActivity implements Tex
         if (!(results.isEmpty() || lastRecognizedClass.equals(results.get(0).getTitle()))) {
             lastRecognizedClass = results.get(0).getTitle();
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                textToSpeech.speak(lastRecognizedClass, TextToSpeech.QUEUE_FLUSH, null, null);
+                textToSpeech.speak(lastRecognizedClass, TextToSpeech.QUEUE_ADD, null, null);
             } else {
-                textToSpeech.speak(lastRecognizedClass, TextToSpeech.QUEUE_FLUSH, null);
+                textToSpeech.speak(lastRecognizedClass, TextToSpeech.QUEUE_ADD, null);
             }
         }
     }

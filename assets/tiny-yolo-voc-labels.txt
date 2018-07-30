@@ -8,13 +8,13 @@ car
 cat
 chair
 cow
-diningtable
+desk
 dog
 horse
 motorbike
-person
-pottedplant
+human
+potted plant
 sheep
 sofa
 train
-tvmonitor
+display

@@ -3,8 +3,8 @@ package org.tensorflow.yolo.model;
 /**
  * Model to store the data of a bounding box
  *
- * Created by Zoltan Szabo on 12/17/17.
- * URL: https://github.com/szaza/android-yolo-v2
+ * Created by Alessio Mangano on 12/17/17.
+ * URL: https://github.com/sparkling18srl/yolo-android
  */
 public class BoundingBox {
     private double x;

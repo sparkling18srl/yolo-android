@@ -27,7 +27,7 @@ import static org.tensorflow.yolo.Config.LOGGING_TAG;
 
 /**
  * Classifier activity class
- * Modified by Zoltan Szabo
+ * Modified by Alessio Mangano
  */
 public class ClassifierActivity extends TextToSpeechActivity implements OnImageAvailableListener {
     private boolean MAINTAIN_ASPECT = true;
@@ -107,7 +107,7 @@ public class ClassifierActivity extends TextToSpeechActivity implements OnImageA
             final List<Recognition> results = recognizer.recognizeImage(croppedBitmap);
             lastProcessingTimeMs = SystemClock.uptimeMillis() - startTime;
             overlayView.setResults(results);
-            speak(results);
+            //speak(results);
             requestRender();
             computing = false;
         });

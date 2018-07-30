@@ -3,8 +3,8 @@ package org.tensorflow.yolo.util.math;
 /**
  * ArgMax function to select the higher value and its index from the array.
  *
- * Created by Zoltan Szabo on 1/5/18.
- * URL: https://github.com/szaza/android-yolo-v2
+ * Created by Alessio Mangano on 1/5/18.
+ * URL: https://github.com/sparkling18srl/yolo-android
  */
 public class ArgMax {
 

@@ -19,10 +19,14 @@ import java.util.List;
 
 /**
  * A simple View providing a render callback to other classes.
- * Modified by Zoltan Szabo
+ * Modified by Alessio Mangano
  */
 public class OverlayView extends View {
-    private final Paint paint;
+
+    private final static float STROKE_WIDTH = 10f;
+    private final static float FILL_ALPHA = 255f;
+    private final static float TITLE_FONT_SIZE = 16f;
+    private final Paint paint, paintTitle, paintText;
     private final List<DrawCallback> callbacks = new LinkedList();
     private List<Recognition> results;
     private List<Integer> colors;
@@ -33,8 +37,18 @@ public class OverlayView extends View {
         paint = new Paint();
         paint.setColor(Color.GREEN);
         paint.setStyle(Paint.Style.STROKE);
-        paint.setTextSize(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
-                15, getResources().getDisplayMetrics()));
+        paint.setStrokeWidth(STROKE_WIDTH);
+
+        paintTitle = new Paint();
+        paintTitle.setColor(Color.GREEN);
+        paintTitle.setStyle(Paint.Style.FILL_AND_STROKE);
+        paintTitle.setStrokeWidth(STROKE_WIDTH);
+
+        paintText = new Paint();
+        paintText.setColor(Color.BLACK);
+        paintText.setTextSize(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
+                TITLE_FONT_SIZE, getResources().getDisplayMetrics()));
+
         resultsViewHeight = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
                 112, getResources().getDisplayMetrics());
         colors = ClassAttrProvider.newInstance(context.getAssets()).getColors();
@@ -52,12 +66,21 @@ public class OverlayView extends View {
 
         if (results != null) {
             for (int i = 0; i < results.size(); i++) {
-                RectF box = reCalcSize(results.get(i).getLocation());
                 String title = results.get(i).getTitle() + ":"
-                        + String.format("%.2f", results.get(i).getConfidence());
+                        + String.format("%.2f", results.get(i).getConfidence() * 100f);
+
+                RectF box = reCalcSize(results.get(i).getLocation());
+                RectF boxTitle = reCalcSizeTitle(box, title);
                 paint.setColor(colors.get(results.get(i).getId()));
+                paint.setStrokeWidth(results.get(i).getConfidence() * STROKE_WIDTH);
+                paint.setAlpha((int) (FILL_ALPHA * results.get(i).getConfidence()));
+                paintTitle.setColor(colors.get(results.get(i).getId()));
+                paintTitle.setStrokeWidth(results.get(i).getConfidence() * STROKE_WIDTH);
+                paintTitle.setAlpha((int) (FILL_ALPHA * results.get(i).getConfidence()));
+
                 canvas.drawRect(box, paint);
-                canvas.drawText(title, box.left, box.top, paint);
+                canvas.drawRect(boxTitle, paintTitle);
+                canvas.drawText(title, boxTitle.left + 2 * STROKE_WIDTH, box.top - 2 * STROKE_WIDTH, paintText);
             }
         }
     }
@@ -88,6 +111,21 @@ public class OverlayView extends View {
 
         float right = Math.min(rect.getRight() * sizeMultiplier, this.getWidth() - padding);
         float bottom = Math.min(rect.getBottom() * sizeMultiplier + offsetY, this.getHeight() - padding);
+
+        return new RectF(left, top, right, bottom);
+    }
+
+    private RectF reCalcSizeTitle(RectF rect, String title) {
+        int padding = 0;
+
+        float offsetX = 0;
+        float offsetY = -(40 + 2 * STROKE_WIDTH);
+
+        float left = rect.left + offsetX;
+        float top = rect.top + offsetY;
+
+        float right = rect.left + title.length() * 25;
+        float bottom = rect.top;
 
         return new RectF(left, top, right, bottom);
     }

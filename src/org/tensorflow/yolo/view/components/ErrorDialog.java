@@ -8,10 +8,10 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 
 /**
- * Created by Zoltan Szabo on 1/13/18.
+ * Created by Alessio Mangano on 1/13/18.
  *
  * Shows an error message dialog.
- * URL: https://github.com/szaza/android-yolo-v2
+ * URL: https://github.com/sparkling18srl/yolo-android
  */
 public class ErrorDialog extends DialogFragment {
     private static final String ARG_MESSAGE = "message";

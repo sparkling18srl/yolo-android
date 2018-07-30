@@ -19,7 +19,7 @@ import static org.tensorflow.yolo.Config.LOGGING_TAG;
 
 /**
  * Camera activity class.
- * Modified by Zoltan Szabo
+ * Modified by Alessio Mangano
  */
 public abstract class CameraActivity extends Activity implements OnImageAvailableListener {
     private static final int PERMISSIONS_REQUEST = 1;

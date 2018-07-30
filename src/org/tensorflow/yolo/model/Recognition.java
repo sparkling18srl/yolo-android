@@ -2,8 +2,8 @@ package org.tensorflow.yolo.model;
 
 /**
  * An immutable result returned by a recognizer describing what was recognized.
- * Created by Zoltan Szabo on 12/17/17.
- * URL: https://github.com/szaza/android-yolo-v2
+ * Created by Alessio Mangano on 12/17/17.
+ * URL: https://github.com/sparkling18srl/yolo-android
  */
 public final class Recognition {
     /**

@@ -7,8 +7,8 @@ import java.nio.ByteBuffer;
 
 /**
  * Utility class for manipulating images.
- * Modified by Zoltan Szabo
- * URL: https://github.com/szaza/android-yolo-v2
+ * Modified by Alessio Mangano
+ * URL: https://github.com/sparkling18srl/yolo-android
  **/
 public class ImageUtils {
     // This value is 2 ^ 18 - 1, and is used to clamp the RGB values before their ranges

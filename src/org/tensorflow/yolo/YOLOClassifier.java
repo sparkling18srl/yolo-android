@@ -15,11 +15,10 @@ import java.util.PriorityQueue;
 import java.util.Vector;
 
 /**
- * Implementation of YOLOv2 classifier based on the article:
- * https://arxiv.org/pdf/1612.08242.pdf
+ * Implementation of YOLOv2 classifier
  *
- * Created by Zoltan Szabo on 12/17/17.
- * https://github.com/szaza/android-yolo-v2
+ * Created by Alessio Mangano on 12/17/17.
+ * https://github.com/sparkling18srl/yolo-android
  */
 public class YOLOClassifier {
     private final static float OVERLAP_THRESHOLD = 0.5f;
